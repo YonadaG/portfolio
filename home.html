@@ -8,14 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portfolio</title>
     <link rel="stylesheet" type=" text/css" href="portfolio.css">
-    
+   
+
 </head>
 <style>
-    
-@media screen  and(max-width:390px)
-  
-  
-
+  .img-section img {
+   display: block;
+    margin-left: auto;
+     margin-right: auto;
+      width: 700px;
 </style>
 <body>
 
@@ -53,7 +54,11 @@
              </div>
              
              <div class="img-section">
-                <img  style="width: 700px; margin-left: auto;"  src="Illustration-header@2x.png" alt="">
+                <img 
+               src="Illustration-header@2x.png" 
+                alt="" 
+                style="display: block; margin-left: auto; margin-right: auto; width: 700px;">
+
              </div>
 
             </div>
@@ -111,7 +116,9 @@
                         </div>
                       </div>
                       <div class="hover-reveal">
-                        <button>See project</button>
+                       <button class="see-project-btn" data-title="Data Dashboard"
+                    data-description="this is the new details about my project and how its is better than my first try" 
+                    data-img="webport.png" >See Project</button>
                       </div>
                     </div>
                   </div>
@@ -128,7 +135,9 @@
                         </div>
                       </div>
                       <div class="hover-reveal">
-                        <button>See project</button>
+                       <button class="see-project-btn" data-title="Project 1"
+                    data-description="this is the new details about my project and how its is better than my first try" 
+                    data-img="dashboard.png" >See Project</button>
                       </div>
                     </div>
                   </div>
@@ -145,7 +154,9 @@
                         </div>
                       </div>
                       <div class="hover-reveal">
-                        <button>See project</button>
+                         <button class="see-project-btn" data-title="Healthcare"
+                    data-description="this is the new details about my project and how its is better than my first try" 
+                    data-img=" dashboard.png" >See Project</button>
                       </div>
                     </div>
                   </div>
@@ -165,7 +176,9 @@
                     </div>
                   </div>
                   <div class="hover-reveal">
-                    <button>See project</button>
+                    <button class="see-project-btn" data-title="Dashboard"
+                    data-description="this is the new details about my project and how its is better than my first try" 
+                    data-img=" Mask Group.png" >See Project</button>
                   </div>
                 </div>
               </div>
@@ -182,7 +195,9 @@
                     </div>
                   </div>
                   <div class="hover-reveal">
-                    <button>See project</button>
+                      <button class="see-project-btn" data-title="Healthcare"
+                    data-description="this is the new details about my project and how its is better than my first try" 
+                    data-img="dashboard.png" >See Project</button>
                   </div>
                 </div>
               </div>
@@ -199,10 +214,42 @@
                     </div>
                   </div>
                   <div class="hover-reveal">
-                    <button>See project</button>
+                   <button class="see-project-btn" data-title="Project 1"
+                    data-description="this is the new details about my project and how its is better than my first try" 
+                    data-img="webport.png" >See Project</button>
                   </div>
                 </div>
               </div>
+              <div class="panel" id="projectPanel">
+    <div class="panel-content">
+      <span class="close-panel">&times;</span>
+
+        <div class="panel-Title-section"> 
+         <h2 id="panelTitle">Title Here</h2>
+      </div>
+      
+       <div p-description>  
+
+        <div class="p-img">
+        <img id="panelImg" src="" alt="Project Image" style="width:100%;max-width:300px;display:block;margin:10px auto;">
+        </div>
+
+     <div class="p-right">
+
+     <p id="panelDescription">Description here</p>
+
+         <div class="p-buttons">
+       <button id="panelActionBtn" style="display:block;margin:10px auto;">html</button>
+       <button id="panelActionBtn" style="display:block;margin:10px auto;">css</button>
+       <button id="panelActionBtn" style="display:block;margin:10px auto;">javascript</button>
+         </div>
+
+  </div>
+
+     </div>
+     
+    </div>
+  </div>
         </div>
         <br>
          <div class="about-me">
@@ -297,4 +344,41 @@
 
     
 </body>
+<script >
+  const panel = document.getElementById("projectPanel");
+const closeBtn = document.querySelector(".close-panel");
+const panelTitle = document.getElementById("panelTitle");
+const panelDesc = document.getElementById("panelDescription");
+const panelImg = document.getElementById("panelImg");
+const panelActionBtn = document.getElementById("panelActionBtn");
+
+// All buttons
+const buttons = document.querySelectorAll(".see-project-btn");
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // Set content from data attributes
+    panelTitle.textContent = btn.getAttribute("data-title");
+    panelDesc.textContent = btn.getAttribute("data-description");
+    panelImg.src = btn.getAttribute("data-img");
+
+    // Show panel
+    panel.classList.add("show");
+  });
+});
+
+// Close the panel
+closeBtn.addEventListener("click", () => {
+  panel.classList.remove("show");
+});
+
+// Also close if user clicks outside the content
+panel.addEventListener("click", (e) => {
+  if (e.target === panel) {
+    panel.classList.remove("show");
+  }
+});
+
+  </script>
 </html>
+  
